@@ -130,7 +130,7 @@ int main() {
 
 */
 
-
+/*
 #include <iostream>
 using namespace std;
 int main() {
@@ -162,3 +162,85 @@ int main() {
 
     return 0;
 }
+*/
+
+/*
+#include <iostream>
+using namespace std;
+int main() {
+
+    int n, a, b;
+    cout << "Digite um número inteiro: " << endl;
+    cin >> n;
+
+    a = n % 10;
+    while (n >= 10)
+    {
+        n = n / 10;
+        b = n;
+    }
+
+    if (a == b)
+    {
+        cout << "1" << endl;
+    }
+    
+    else
+    {
+        cout << "0" << endl;
+    }
+    
+
+
+
+
+    return 0;
+}
+*/
+
+/*
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int n, c, d;
+    struct fracao
+    {
+        int numerador;
+        int denominador;
+    };
+    fracao f;
+    f.numerador;
+    f.denominador;
+
+    cout << "Digite o numerador e o denominador: " << endl;
+    cin >> f.numerador >> f.denominador;
+
+    int a = f.numerador;
+    int b = f.denominador;
+    // O problema só foi resolvido quando deixe de declarar f.numerador e f.denominador
+    // como a e b, porque a ordem certa para armazenar o valor inicial das variáveis é
+    // a = f.numerador e b = f.denominador, pois o valor de f.numerador e f.denominador
+    // mudam durante o processo de cálculo do MDC.
+
+    n = f.denominador % f.numerador;
+    while (n != 0)
+    {
+        f.denominador = f.numerador;
+        f.numerador = n;
+        n = f.denominador % f.numerador;
+
+    }
+    // o MDC é o f.numerador
+    c = a / f.numerador;
+    d = b / f.numerador;
+    cout << "A fracao simplificada é " << c << "/" << d << endl;
+
+
+
+
+    return 0;
+}
+
+*/
