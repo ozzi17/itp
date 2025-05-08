@@ -8,18 +8,19 @@ int main() {
     int lista[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> lista[n];
+        cin >> lista[i];
     }
     
     for (int i = 0; i < n; i++)
     {
-        cout << lista[i];
+        cout << lista[i] << " ";
+        
     }
     cout << endl;
 
-    for (int i = 0; i < n - 2; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = i + 1; j < n - 1; j++)
+        for (int j = i + 1; j < n; j++)
         {
             if (lista[i] > lista[j])
             {
