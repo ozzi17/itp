@@ -18,7 +18,7 @@ int main() {
     for (int i = 0; i < 10; i++)
     {
         cin >> posa[i];
-    }
+    }   
 
     for (int i = 0; i < 10; i++)
     {
@@ -49,9 +49,10 @@ int main() {
     bool semimpedimentoB = true;
 
     cout << "A: ";
+    
     for (int i = 0; i < 10; i++)
     {
-        if (maiorb < posa[i])
+        if (maiorb < posa[i] && posa[i] > 0)
         {
             cout << joga[i] << " ";
             semimpedimentoA = false;
@@ -68,7 +69,7 @@ int main() {
     cout << "B: ";
     for (int i = 0; i < 10; i++)
     {
-        if (menora > posb[i])
+        if (menora > posb[i] && posb[i] < 0)
         {
             cout << jogb[i] << " ";
             semimpedimentoB = false;
