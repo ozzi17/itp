@@ -25,65 +25,33 @@ int main() {
         cin >> posb[i];
     }
 
+    double menora = posa[0], maiorb = posb[0];
 
-    for (int i = 0; i < 9; i++) // ordenar posiçõs dos jogadores A
+    for (int i = 0; i < 10; i++) 
     {
-        for (int j = i +1; j < 10; j++)
+        if (menora > posa[i])
         {
-            if (posa[i] > posa[j])
-            {
-                double temp = posa[j];
-                posa[j] = posa[i];
-                posa[i] = temp;
-
-
-                double temp2 = joga[j];
-                joga[j] = joga[i];
-                joga[i] = temp2;
-            }
-            
+            menora = posa[i];
         }
         
     }
 
-
-
-    for (int i = 0; i < 9; i++) // ordenar posições B
+    for (int i = 0; i < 10; i++)
     {
-        for (int j = i +1; j < 10; j++)
+        if (maiorb < posb[i])
         {
-            if (posb[i] > posb[j])
-            {
-                double temp = posb[j];
-                posb[j] = posb[i];
-                posb[i] = temp;
-
-                double temp2 = jogb[j];
-                jogb[j] = jogb[i];
-                jogb[i] = temp2;
-            }
-            
+            maiorb = posb[i];
         }
         
     }
     
-    
-    double menora = posa[0];
-    double maiorb = posb[9];
-
-   
-        
-    
-    
-
     bool semimpedimentoA = true;
     bool semimpedimentoB = true;
 
-
     cout << "A: ";
-    for (int i = 0; i <= 9; i++)
+    for (int i = 0; i < 10; i++)
     {
-        if (posa[i] > maiorb)
+        if (maiorb < posa[i])
         {
             cout << joga[i] << " ";
             semimpedimentoA = false;
@@ -96,29 +64,23 @@ int main() {
     }
     
     cout << endl;
-
+    
     cout << "B: ";
-    for (int i = 0; i <= 9; i++)
+    for (int i = 0; i < 10; i++)
     {
-        if (posb[i] < menora)
+        if (menora > posb[i])
         {
             cout << jogb[i] << " ";
             semimpedimentoB = false;
         }
         
     }
+    
     if (semimpedimentoB)
     {
         cout << "sem impedimentos";
     }
     
-    
-    
-    
-
-
-
-
 
     return 0;
 }
