@@ -36,9 +36,17 @@ int main() {
 
   for (int i = 0; i < n; i++) {
     bool jaimpresso = false;
-    if (freqmax == cont[i] && !jaimpresso) {
-      jaimpresso = true;
-      cout << lista[i];
+    if (indicemoda == cont[i] && !jaimpresso) {
+      for (int j = 0; j < i; j++) {
+        if (lista[j] == lista[i]) {
+          jaimpresso = true;
+          break;
+        }
+      }
+
+      if (!jaimpresso) {
+        cout << lista[i] << " ";
+      }
     }
   }
 
