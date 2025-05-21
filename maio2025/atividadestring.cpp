@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-/* QUESTAO 1
+/* //QUESTAO 1
 int main() {
 
     string texto;
@@ -26,7 +26,7 @@ int main() {
 }
     */
 
-/* QUESTAO 2
+/* //QUESTAO 2
 int main() {
 
     string texto;
@@ -53,7 +53,7 @@ int main() {
     return 0;
 }
     */
-/* QUESTAO 3
+/* //QUESTAO 3
 int main() {
 
     string linha, strg;
@@ -79,7 +79,7 @@ int main() {
 }
 */
 
-int main() {
+int main() {  // QUESTAO 4
 
     string placa;
     cin >> placa;
