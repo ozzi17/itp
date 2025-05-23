@@ -1,24 +1,26 @@
 #include <iostream>
 using namespace std;
 int piso(float number) { // cria a função para determinar o piso
-    int inteiro = 0; 
-    if (number >= 0) // inicia o laco se o número for maior que zero
+    int count = 0; 
+    if (number > 0)
     {
-        for (int i = 0; i <= number; i++)
+        while (number >= 1)
         {
-            inteiro = i; //substitui o inteiro por i enquanto i for menor ou igual ao número
-        } 
+            count++;
+            number--;
+        }
+        
     }
-    else if (number < 0) //inicia o laço se o número for menor que zero
+    else if (number < 0)
     {
-        for (int i = 0; i >= number; i--)
+         while (number < 0)
         {
-            inteiro = i - 1; //o -1 ocorre porque o valor precisa ser menor que o número inserido
-        } 
+            count--;
+            number++;
+        }
     }
-    return inteiro; //retorna o valor final, no caso, o piso do número
+    return count;
 }
-//se o número inseido for 0, o valor a ser retornado será 0
 
 int main() {
 
