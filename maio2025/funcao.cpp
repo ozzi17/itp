@@ -57,11 +57,17 @@ int mdc(int a, int b) {
     maior = b;
     menor = temp;
   }
-  int n = maior % menor;
+  int n = b % a;
   while (n != 0) {
     b = a;
     a = n;
     n = b % a;
   }
-  return n;
+  return a;
+}
+int main(){
+    int n, m;
+    cin >> n >> m;
+    cout << mdc(n, m);
+    return 0;
 }
