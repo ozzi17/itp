@@ -1,0 +1,6 @@
+Sempre que precisar o doctest.h, na hora de compliar coloque
+
+g++ -std=c++17 func_test.cpp -o seu_executavel
+
+isso acontece por causa do compilador usado pelo MacOs,
+que não reconhece marcações mais modernas do c++11

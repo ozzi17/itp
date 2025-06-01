@@ -1,0 +1,1 @@
+bool rainha(int linha[8], int coluna[8]) {}
