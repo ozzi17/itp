@@ -1,33 +1,31 @@
 #include <iostream>
 using namespace std;
-int piso(float number) { // cria a função para determinar o piso
-    int count = 0; 
-    if (number > 0)
+int piso(float number) {  // cria a função para determinar o piso
+  int count = 0;
+  if (number > 0) {
+    while (number >= 1)  // enquanto o numero for > 0, a contagem continua
     {
-        while (number >= 1)
-        {
-            count++;
-            number--;
-        }
-        
+      count++;
+      number--;
     }
-    else if (number < 0)
+
+  } else if (number < 0) {
+    while (
+        number <
+        0)  // enquanto o número for < 0, a contagem diminui porque o número < 0
     {
-         while (number < 0)
-        {
-            count--;
-            number++;
-        }
+      count--;
+      number++;
     }
-    return count;
+  }
+  return count;
 }
 
 int main() {
+  float n;   // declara um número n de ponto flutuante
+  cin >> n;  // comando para inserir o número
 
-    float n; //declara um número n de ponto flutuante
-    cin >> n; //comando para inserir o número
+  cout << piso(n);  // imprime o piso do número
 
-    cout << piso(n); //imprime o piso do número
-
-    return 0;
+  return 0;
 }

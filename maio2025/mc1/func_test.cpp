@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "funcoesmc1.cpp"
+#include "funcoesmc1.h"
 
 TEST_CASE("TESTA A FUNCAO ABSOLUTO") { CHECK(absoluto(-5) == 5); }
 TEST_CASE("TESTA A FUNCAO DIV") {

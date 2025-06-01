@@ -44,3 +44,14 @@ int divisao(int a, int b) {
   }
   return count;
 }
+
+int mood(int a, int b) {
+  int r = a, abs_b = absoluto(b);
+  while (r < 0) {
+    r += abs_b;
+  }
+  while (r >= abs_b) {
+    r -= abs_b;
+  }
+  return r;
+}
