@@ -34,24 +34,43 @@ int teto(float number) {  // cria a função para determinar o teto
 
 int absoluto(int x) { return (x < 0) ? x * -1 : x; }
 
+
 int divisao(int a, int b) {
-  int count = 0;
+  if (b == 0){
+    cout << "Não é possível dividir por 0" << endl;
+    return 0; // se o divisor for 0, a função retorna o erro e encerra
+  }
+  int count = 0; // inteiro para contagem do quociente
+  int sinaldividendo = 1, sinaldivisor = 1;
+  if (a < 0) {
+    sinaldividendo = -1;
+  }
+  if (b < 0) {
+    sinaldivisor = -1;
+  }
   a = absoluto(a);
   b = absoluto(b);
-  while (a > 0) {
+  while (a >= b) {
     a = a - b;
-    count++;
+    count++; // subtração recursiva para achar o quociente
   }
-  return count;
+  int sinalres = sinaldividendo * sinaldivisor; 
+  if (sinalres < 0)
+  {
+    count++; // se o sinal do resultado for negativo, adiciona +1 ao quociente
+    // porque o resto (mesmo que não mostrado aqui) precisa ser maior que 0
+  }
+  
+  return count * sinaldividendo *sinaldivisor; // imprime o resultado e corrige o sinal
 }
 
-int mood(int a, int b) {
-  int r = a, abs_b = absoluto(b);
-  while (r < 0) {
+int mood(int a, int b) { // calcula o resto de divisao
+  int r = a, abs_b = absoluto(b); // o resto começa com o valor a
+  while (r < 0) { // enquanto r for negativo, adiciona a r o valor do módulo de b
     r += abs_b;
   }
-  while (r >= abs_b) {
+  while (r >= abs_b) { // enquanto r for maior ou igual ao módulo de b, subtrai o módulo de b de r
     r -= abs_b;
   }
-  return r;
+  return r; // retorna o resto calculado
 }
