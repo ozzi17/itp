@@ -37,7 +37,7 @@ int absoluto(int x) { return (x < 0) ? x * -1 : x; }
 
 int divisao(int a, int b) {
   if (b == 0){
-    cout << "Não é possível dividir por 0" << endl;
+    // cout << "Não é possível dividir por 0" << endl;
     return 0; // se o divisor for 0, a função retorna o erro e encerra
   }
   int count = 0; // inteiro para contagem do quociente
