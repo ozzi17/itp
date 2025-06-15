@@ -34,13 +34,12 @@ int teto(float number) {  // cria a função para determinar o teto
 
 int absoluto(int x) { return (x < 0) ? x * -1 : x; }
 
-
 int divisao(int a, int b) {
-  if (b == 0){
+  if (b == 0) {
     // cout << "Não é possível dividir por 0" << endl;
-    return 0; // se o divisor for 0, a função retorna o erro e encerra
+    return 0;  // se o divisor for 0, a função retorna o erro e encerra
   }
-  int count = 0; // inteiro para contagem do quociente
+  int count = 0;  // inteiro para contagem do quociente
   int sinaldividendo = 1, sinaldivisor = 1;
   if (a < 0) {
     sinaldividendo = -1;
@@ -52,25 +51,45 @@ int divisao(int a, int b) {
   b = absoluto(b);
   while (a >= b) {
     a = a - b;
-    count++; // subtração recursiva para achar o quociente
+    count++;  // subtração recursiva para achar o quociente
   }
-  int sinalres = sinaldividendo * sinaldivisor; 
-  if (sinalres < 0)
-  {
-    count++; // se o sinal do resultado for negativo, adiciona +1 ao quociente
+  int sinalres = sinaldividendo * sinaldivisor;
+  if (sinalres < 0) {
+    count++;  // se o sinal do resultado for negativo, adiciona +1 ao quociente
     // porque o resto (mesmo que não mostrado aqui) precisa ser maior que 0
   }
-  
-  return count * sinaldividendo *sinaldivisor; // imprime o resultado e corrige o sinal
+
+  return count * sinaldividendo *
+         sinaldivisor;  // imprime o resultado e corrige o sinal
 }
 
-int mood(int a, int b) { // calcula o resto de divisao
-  int r = a, abs_b = absoluto(b); // o resto começa com o valor a
-  while (r < 0) { // enquanto r for negativo, adiciona a r o valor do módulo de b
+int mood(int a, int b) {           // calcula o resto de divisao
+  int r = a, abs_b = absoluto(b);  // o resto começa com o valor a
+  while (r <
+         0) {  // enquanto r for negativo, adiciona a r o valor do módulo de b
     r += abs_b;
   }
-  while (r >= abs_b) { // enquanto r for maior ou igual ao módulo de b, subtrai o módulo de b de r
+  while (r >= abs_b) {  // enquanto r for maior ou igual ao módulo de b, subtrai
+                        // o módulo de b de r
     r -= abs_b;
   }
-  return r; // retorna o resto calculado
+  return r;  // retorna o resto calculado
+}
+
+int mdc(int a, int b) {
+  int n = mood(b, a);  // recebe dois valores, calcula o mod e atribui a n
+  cout << "a = " << a << " ";
+  cout << "b = " << b << " ";
+  cout << "n = " << n << endl;  // imprime o valor de cada variável
+  while (n != 0) {              // enquanto n for diferente de 0
+    b = a;                      // atribui o valor de a em b
+    a = n;                      // atribui o valor de n em a
+    n = mood(b, a);  // calcula o mod de b e a atualizados e atribui a n
+    cout << "a = " << a << " ";
+    cout << "b = " << b << " ";
+    cout << "n = " << n << endl;  // imprime os valores atualizados
+  }
+  return a;  // após calcular o mdc, a função retorna o valor de a
+  // basicamente a função calcula o mdc de dois valores usando resto de divisão
+  // de forma recursiva
 }

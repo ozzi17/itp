@@ -18,8 +18,7 @@ int main() {
     char atual = texto[i];        // analisa cada caractere no laço
     if (isalpha(atual) != 0) {    // se for uma letra, o laço executa
       if (isupper(atual) != 0) {  // serve para as letras maiúsculas
-        if (atual + deslocamento >
-            'Z') {  // se o deslocamento "passar" de Z, volta a partir de A
+        if (atual + deslocamento > 'Z') {  // se o deslocamento "passar" de Z, volta a partir de A
           atual = atual - 26 + deslocamento;
           cifrada += atual;  // adiciona o caractere na nova string
         } else {
