@@ -63,8 +63,8 @@ int divisao(int a, int b) {
          sinaldivisor;  // imprime o resultado e corrige o sinal
 }
 
-int mood(int a, int b) {           // calcula o resto de divisao
-  int r = a, abs_b = absoluto(b);  // o resto começa com o valor a
+int mood(int a, int b) {      // calcula o resto de divisao
+  int r = a, abs_b = abs(b);  // o resto começa com o valor a
   while (r <
          0) {  // enquanto r for negativo, adiciona a r o valor do módulo de b
     r += abs_b;
@@ -74,22 +74,4 @@ int mood(int a, int b) {           // calcula o resto de divisao
     r -= abs_b;
   }
   return r;  // retorna o resto calculado
-}
-
-int mdc(int a, int b) {
-  int n = mood(b, a);  // recebe dois valores, calcula o mod e atribui a n
-  cout << "a = " << a << " ";
-  cout << "b = " << b << " ";
-  cout << "n = " << n << endl;  // imprime o valor de cada variável
-  while (n != 0) {              // enquanto n for diferente de 0
-    b = a;                      // atribui o valor de a em b
-    a = n;                      // atribui o valor de n em a
-    n = mood(b, a);  // calcula o mod de b e a atualizados e atribui a n
-    cout << "a = " << a << " ";
-    cout << "b = " << b << " ";
-    cout << "n = " << n << endl;  // imprime os valores atualizados
-  }
-  return a;  // após calcular o mdc, a função retorna o valor de a
-  // basicamente a função calcula o mdc de dois valores usando resto de divisão
-  // de forma recursiva
 }

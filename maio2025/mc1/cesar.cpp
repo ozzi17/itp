@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-#include "funcoesmc1.h"
 using namespace std;
 
 int main() {
@@ -11,14 +10,15 @@ int main() {
   getline(cin, texto);  // recebe a linha de texto
   cin >> deslocamento;  // recebe o deslocamento da cifra
 
-  deslocamento = mood(
-      deslocamento, 26);  // garante que o deslocamento esteja no intervalo 0-25
+  deslocamento =
+      deslocamento % 26;  // garante que o deslocamento esteja no intervalo 0-25
   string cifrada;         // string a ser retornada no fim do código
   for (int i = 0; i < texto.size(); i++) {
     char atual = texto[i];        // analisa cada caractere no laço
     if (isalpha(atual) != 0) {    // se for uma letra, o laço executa
       if (isupper(atual) != 0) {  // serve para as letras maiúsculas
-        if (atual + deslocamento > 'Z') {  // se o deslocamento "passar" de Z, volta a partir de A
+        if (atual + deslocamento >
+            'Z') {  // se o deslocamento "passar" de Z, volta a partir de A
           atual = atual - 26 + deslocamento;
           cifrada += atual;  // adiciona o caractere na nova string
         } else {

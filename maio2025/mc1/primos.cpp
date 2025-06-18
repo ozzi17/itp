@@ -8,7 +8,7 @@ int main() {
   for (int i = a; i <= b; i++) {
     int divisores = 0;
     for (int j = 1; j <= i; j++) {
-      if (mood(i, j) == 0) {
+      if (i % j == 0) {
         divisores++;
       }
     }
