@@ -4,7 +4,6 @@
 #include <numeric>
 using namespace std;
 
-
 //base: o nº que será elevado, ou  seja, o texto cifrado
 //exp: a chave púlblica "e" ou privada "d"
 //mod: o módulo "n"
@@ -71,18 +70,10 @@ bool eh_primo(int n){
 }
 
 int main(){
-    long p, q;
-    cin >> p >> q;
-
-    if (!eh_primo(p) || !eh_primo(q) || p == q)
-    { //garante que p e q sejam primos e diferentes
-        cout << "erro, tente novamente";
-        return 1;
-    }
-    
-    long n = p * q; //n é o módulo, parte da chave pública e privada
-    long phi = (p - 1) * (q - 1);
-    long e = 2; //expoente da chave pública, coprimo de phi
+    long p = 17, q = 19;
+    long n = p * q;//n é o módulo, parte da chave pública e privada
+    long phi = (p-1) * (q-1);
+    long e = 2;//expoente da chave pública, coprimo de phi
     while (e < phi)
     {
         if (gcd(e, phi) == 1)//se o mdc for 1, "e" e phi são coprimos
@@ -91,47 +82,44 @@ int main(){
         }
         e++;
     }
-    long d = inv_mult(e, phi); //expoente da chave privada
+    long d = inv_mult(e, phi);//expoente da chave privada
 
-    string texto; //armazena a mensagem original
-    cin.ignore(); //limpa o buffer p/ garantir que o getline funcione
-    getline(cin, texto);//lê a linha inteira de texto
-
-    int char_validos = 0;
-    for(char c : texto){//conta quantos caracteres para saber o tamanho do array
-        if (isalpha(c))
-        {
-            char_validos++;
-        }
+    string texto;//armazena a mensagem original
+    getline(cin, texto); //lê a linha inteira de texto
+    if (texto.size() == 0)
+    {
+        cout << "string vazia";
+        return 0;
     }
-
+    long* texto_cripto = new long[texto.size()];
+    //o tamanho do array será o tamanho da string 
     //usa alocação dinâmica p/ armazenar números criptografados
-    long* texto_cripto = new long[char_validos];
-    int indice = 0;
+    
+    cout << "p = " << p << endl;
+    cout << "q = " << q << endl;
 
-    for(char c : texto){ //percorre cada caractere da mensagem
-        if (isalpha(c))
-        {   //converte a letra em um número
-            int msg = toupper(c) - 'A' + 1; //'A' - 1 é usado p/ converter 
-            //'A' (65) no número 1
-            //c = M^e mod n, é a criptografia em si
-            texto_cripto[indice] = power_mod(msg, e, n);
-            cout << texto_cripto[indice] << " ";
-            indice++;
-        }
+    for (int i = 0; i < texto.size(); i++)
+    {
+        char c = texto[i];
+        //converte o caractere diretamente no valor ASCII
+        long msg = c;
+        //c = M^e mod n, é a criptografia em si
+        texto_cripto[i] = power_mod(msg, e, n);
+        cout << texto_cripto[i] << " ";
     }
     cout << endl;
 
     string texto_desc = ""; //string vazia que guardará o texto descodificado
-    for (int i = 0; i < char_validos; i++)
+    for (int i = 0; i < texto.size(); i++)
     {
         long desc_char_code = power_mod(texto_cripto[i], d, n);
-        //converte o número em caractere e adiciona a string final
-        texto_desc += static_cast<char>(desc_char_code + 'A' - 1);
-        //+ 'A' - 1 é para reconverter no número da letra correspondente no ASCII
+
+        //converte o código numérico em char
+        texto_desc += static_cast<char>(desc_char_code);
     }
     cout << texto_desc << endl;
-    delete[] texto_cripto; //libera a memória alocada p/ evitar problemas
+    delete[] texto_cripto;//libera a memória alocada p/ evitar problemas
+    
 
     return 0;
 }
