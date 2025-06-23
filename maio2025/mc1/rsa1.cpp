@@ -112,7 +112,8 @@ int main(){
     for(char c : texto){ //percorre cada caractere da mensagem
         if (isalpha(c))
         {   //converte a letra em um número
-            int msg = toupper(c) - 'A' + 1;
+            int msg = toupper(c) - 'A' + 1; //'A' - 1 é usado p/ converter 
+            //'A' (65) no número 1
             //c = M^e mod n, é a criptografia em si
             texto_cripto[indice] = power_mod(msg, e, n);
             cout << texto_cripto[indice] << " ";
@@ -127,6 +128,7 @@ int main(){
         long desc_char_code = power_mod(texto_cripto[i], d, n);
         //converte o número em caractere e adiciona a string final
         texto_desc += static_cast<char>(desc_char_code + 'A' - 1);
+        //+ 'A' - 1 é para reconverter no número da letra correspondente
     }
     cout << texto_desc << endl;
     delete[] texto_cripto; //libera a memória alocada p/ evitar problemas
