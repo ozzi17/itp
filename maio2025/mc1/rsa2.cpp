@@ -74,6 +74,7 @@ int main(){
     long n = p * q;//n é o módulo, parte da chave pública e privada
     long phi = (p-1) * (q-1);
     long e = 2;//expoente da chave pública, coprimo de phi
+    //2 é apenas o valor inicial de e, que pode ser incrementadp depois 
     while (e < phi)
     {
         if (gcd(e, phi) == 1)//se o mdc for 1, "e" e phi são coprimos
@@ -92,6 +93,7 @@ int main(){
         return 0;
     }
     long* texto_cripto = new long[texto.size()];
+    //cria um ponteiro texto_cripto para um array de tamanho variável
     //o tamanho do array será o tamanho da string 
     //usa alocação dinâmica p/ armazenar números criptografados
     
@@ -118,7 +120,7 @@ int main(){
         texto_desc += static_cast<char>(desc_char_code);
     }
     cout << texto_desc << endl;
-    delete[] texto_cripto;//libera a memória alocada p/ evitar problemas
+    delete[] texto_cripto;//libera a memória alocada p/ evitar vazamento de memória
     
 
     return 0;
