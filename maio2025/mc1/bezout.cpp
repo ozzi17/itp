@@ -13,6 +13,10 @@ int mdcBezout(int a, int b, int &s, int &t) {
   int s_atual = 0, t_atual = 1; // coeficientes de b: a*0 + b*1
 
   int r_antigo = a, r_atual = b; //variáveis p/ algoritmo de euclides
+  //primeiros dois números a serem usados no algoritmo
+  //o r_antigo vira o r_atual da iteração anterior
+  //r_atual vira o resto da divisão anterior
+  //o último r_antigo será o mdc
 
   while (r_atual != 0) {
     int quociente = r_antigo / r_atual;
@@ -58,6 +62,6 @@ int main() {
   cout << "Verificação: (" << s << ")*" << a << " + (" << t << ")*" << b
        << " = " << (s * a) + (t * b) << endl;
   
-  //todos os cout agrupados e tabulações são para formatação e melhor visualização do processo no terminal
+  //todos os cout agrupados e tab são para melhor visualização do processo no terminal
   return 0;
 }
