@@ -64,7 +64,7 @@ int divisao(int a, int b) {
 }
 
 int mood(int a, int b) {      // calcula o resto de divisao
-  int r = a, abs_b = abs(b);  // o resto começa com o valor a
+  int r = a, abs_b = absoluto(b);  // o resto começa com o valor a
   while (r <
          0) {  // enquanto r for negativo, adiciona a r o valor do módulo de b
     r += abs_b;

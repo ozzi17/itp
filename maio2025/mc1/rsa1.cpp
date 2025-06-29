@@ -8,10 +8,10 @@ using namespace std;
 //base: o nº que será elevado, ou  seja, o texto cifrado
 //exp: a chave púlblica "e" ou privada "d"
 //mod: o módulo "n"
-long power_mod(long base, long exp, long mod){ //evita overflow c/ números grandes
+long long power_mod(long long base, long long exp, long long mod){ //evita overflow c/ números grandes
     //em vez de calcular o número enorme de (base*exp) e depois tirar o mod,
     //aplico o mod a cada passo da multiplicação
-    long res = 1;
+    long long res = 1;
     base %= mod; //caso a base > módulo, ela é reduzida
     while (exp > 0){
         if (exp % 2 == 1) //se o expoente for ímpar, é mult pela base atual
@@ -31,9 +31,9 @@ long power_mod(long base, long exp, long mod){ //evita overflow c/ números gran
 //d: é o expoente da chave privada "d"
 //phi: resultado da função totiente de euler p/ "n": (p-1)*(q-1)
 
-long inv_mult(long e, long phi){ //calcula o inverso multiplicativo
-    long m0 = phi, t, q; //variáveis temporárias
-    long x0 = 0, x1 = 1;
+long long inv_mult(long long e, long long phi){ //calcula o inverso multiplicativo
+    long long m0 = phi, t, q; //variáveis temporárias
+    long long x0 = 0, x1 = 1;
     if (phi == 1)
     {
         return 0;
@@ -54,7 +54,7 @@ long inv_mult(long e, long phi){ //calcula o inverso multiplicativo
     return x1;
 }
 
-bool eh_primo(int n){
+bool eh_primo(long long n){
     if (n <= 1) //1 não é primo
     {
         return false;
@@ -71,7 +71,7 @@ bool eh_primo(int n){
 }
 
 int main(){
-    long p, q;
+    long long p, q;
     cin >> p >> q;
 
     if (!eh_primo(p) || !eh_primo(q) || p == q)
@@ -80,9 +80,9 @@ int main(){
         return 1;
     }
     
-    long n = p * q; //n é o módulo, parte da chave pública e privada
-    long phi = (p - 1) * (q - 1);
-    long e = 2; //expoente da chave pública, coprimo de phi
+    long long n = p * q; //n é o módulo, parte da chave pública e privada
+    long long phi = (p - 1) * (q - 1);
+    long long e = 2; //expoente da chave pública, coprimo de phi
     //2 é apenas o valor inicial de e, que pode ser incrementadp depois 
     while (e < phi)
     {
@@ -92,7 +92,7 @@ int main(){
         }
         e++;
     }
-    long d = inv_mult(e, phi); //expoente da chave privada
+    long long d = inv_mult(e, phi); //expoente da chave privada
 
     string texto; //armazena a mensagem original
     cin.ignore(); //limpa o buffer p/ garantir que o getline funcione
@@ -108,7 +108,7 @@ int main(){
 
     //usa alocação dinâmica p/ armazenar números criptografados
     //cria um ponteiro texto_cripto para um array de tamanho variável
-    long* texto_cripto = new long[char_validos];
+    long long* texto_cripto = new long long[char_validos];
     int indice = 0;
 
     for(char c : texto){ //percorre cada caractere da mensagem
