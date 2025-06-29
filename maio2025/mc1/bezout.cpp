@@ -18,6 +18,7 @@ int mdcBezout(int a, int b, int &s, int &t) {
   //r_atual vira o resto da divisão anterior
   //o último r_antigo será o mdc
 
+  cout << "r_antigo\tr_atual\t\tquociente\tr_novo\t\ts\t\tt\n";
   while (r_atual != 0) {
     int quociente = r_antigo / r_atual;
     cout << r_antigo << "\t\t" << r_atual << "\t\t" << quociente << "\t\t";
@@ -46,6 +47,7 @@ int mdcBezout(int a, int b, int &s, int &t) {
 
 int main() {
   int a, b; 
+  cout << "digite dois números a e b: " << endl;
   cin >> a >> b;
   if (a == 0 && b == 0) { //se a e b forem 0, o laço faz o código imprimir o erro retornar 1
     cout << "erro, tente novamente";

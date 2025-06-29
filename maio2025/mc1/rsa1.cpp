@@ -74,6 +74,7 @@ int main(){
     long long p, q;
     cin >> p >> q;
 
+    cout << "digite dois primos distintos: " << endl;
     if (!eh_primo(p) || !eh_primo(q) || p == q)
     { //garante que p e q sejam primos e diferentes
         cout << "erro, tente novamente";
@@ -96,6 +97,7 @@ int main(){
 
     string texto; //armazena a mensagem original
     cin.ignore(); //limpa o buffer p/ garantir que o getline funcione
+    cout << "digite a mensagem (apenas letras): " << endl;
     getline(cin, texto);//lê a linha inteira de texto
 
     int char_validos = 0;
