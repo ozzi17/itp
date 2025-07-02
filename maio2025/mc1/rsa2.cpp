@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include <numeric>
+#include "funcoesmc1.h"
 using namespace std;
 
 //base: o nº que será elevado, ou  seja, o texto cifrado
@@ -70,19 +71,20 @@ bool eh_primo(int n){
 }
 
 int main(){
-    long long p = 17, q = 19;
+    long long p = 43, q = 59;
     long long n = p * q;//n é o módulo, parte da chave pública e privada
     long long phi = (p-1) * (q-1);
     long long e = 2;//expoente da chave pública, coprimo de phi
     //2 é apenas o valor inicial de e, que pode ser incrementadp depois 
     while (e < phi)
     {
-        if (gcd(e, phi) == 1)//se o mdc for 1, "e" e phi são coprimos
+        if (mdc(e, phi) == 1)//se o mdc for 1, "e" e phi são coprimos
         {
             break;
         }
         e++;
     }
+
     long long d = inv_mult(e, phi);//expoente da chave privada
 
     string texto;//armazena a mensagem original
@@ -100,7 +102,9 @@ int main(){
     
     cout << "p = " << p << endl;
     cout << "q = " << q << endl;
+    e = 13;
 
+    cout << "d: " << d << "e: " << e << endl;
     for (int i = 0; i < texto.size(); i++)
     {
         char c = texto[i];
